@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta  name="viewport" content="width=1000,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<title>婆婆划</title>
+<style>
+*{margin:0;padding:0;}
+body{font:normal 16px Microsoft Yahei;color:#333}
+h3{margin:20px;}
+.content{margin:20px;}
+#intro{background:#019875;color:#fff;padding:20px;position: relative;}
+#intro h1{font-size:50px;}
+#intro h1 span{padding:3px 8px;background:#fff;font-weight:normal;font-size:12px;font-family:Arial;color:#019875;}
+#intro #download{position: absolute;right:10px;top:10px;display: block;font-family:Arial;font-size:50px;padding:10px 20px;text-decoration: none;background:#fbfbfb;color:#019875;}
+#intro #download:hover{background:#fff;}
+
+#demo-layout{margin:20px;width:360px;height:150px;position: relative;}
+#demo-layout #demo{width:295px;height:100px;overflow:hidden;position:absolute;left:30px;top:0;}
+#demo-layout #demo ul{width:90000px;list-style: none}
+#demo-layout #demo ul li{float:left;width:100px;height:100px;}
+#demo-layout #demo ul li a{display:block;background:#019875;font-size:50px;width:95px;line-height: 100px;text-decoration: none;text-align:center;border-radius:50%;color:#fff;}
+#demo-layout #prev{position:absolute;left:0px;top:20px;}
+#demo-layout #next{position:absolute;right:0px;top:20px;}
+#demo-layout .prevnext{font:normal 50px simsun;cursor: pointer;color:#019875;}
+#demo-layout .prev-disabled{color:#ccc !important;}
+#demo-layout .next-disabled{color:#ccc !important;}
+#demo-layout #pager{position:absolute;left:110px;top:110px;}
+#demo-layout #pager span{display:inline-block;margin-right:10px;width:10px;height:10px;overflow:hidden;background:#019875;text-indent:-999px;cursor: pointer;border-radius:50%;opacity:0.6;}
+#demo-layout #pager span.current{opacity:1;}
+
+#demo-layout2{margin:20px;width:160px;height:300px;position: relative;}
+#demo-layout2 #demo2{width:100px;height:295px;overflow:hidden;position:absolute;left:30px;top:0;}
+#demo-layout2 #demo2 ul{width:90000px;list-style: none}
+#demo-layout2 #demo2 ul li{width:100px;height:100px;}
+#demo-layout2 #demo2 ul li a{display:block;background:#F58F1D;font-size:50px;width:100px;height:95px;line-height: 100px;text-decoration: none;text-align:center;border-radius:50%;color:#fff;}
+#demo-layout2 #prev2{position:absolute;left:0px;top:120px;}
+#demo-layout2 #next2{position:absolute;right:0px;top:120px;}
+#demo-layout2 .prevnext2{font:normal 50px simsun;cursor: pointer;color:#019875;}
+#demo-layout2 .prev2-disabled{color:#ccc !important;}
+#demo-layout2 .next2-disabled{color:#ccc !important;}
+</style>
+
+</head>
+<body>
+<div id="intro">
+<h1>婆婆划 <span>2013/12/04</span></h1><br />
+婆婆划是基于jQuery的滑动插件，自定义功能强大，适合网页各种左右上下的片滑动特效。<br />
+<a href="http://www.github.com/jinzhe/jquery.slider/" id="download">GITHUB</a>
+</div>
+<div id="demo-layout">
+	<div id="demo">
+		<ul>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">7</a></li>
+			<li><a href="#">8</a></li>
+			<li><a href="#">9</a></li>
+		</ul>
+	</div>
+	<div id="pager"><!--页码--></div>
+	<div id="prev" class="prevnext"><</div><!--上组-->
+	<div id="next" class="prevnext">></div><!--下组-->
+</div>
+
+<div id="demo-layout2">
+	<div id="demo2">
+		<ul>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">7</a></li>
+			<li><a href="#">8</a></li>
+			<li><a href="#">9</a></li>
+		</ul>
+	</div>
+	<div id="prev2" class="prevnext2"><</div><!--上组-->
+	<div id="next2" class="prevnext2">></div><!--下组-->
+</div>
+
+
+<h3>功能介绍:</h3>
+<div class="content">
+	1.支持是否拖拽以及支持触摸设备<br />
+	2.支持滚轮滑动<br />
+	3.支持自定义速度<br />
+	4.支持jquery.easing库效果默认swing<br />
+	5.支持是否自动滑动，和滑动间隔<br />
+	6.支持纵向和横向滑动<br />
+	7.支持绑定上一页和下一页绑定按钮<br />
+	8.支持是否显示页码<br />
+	9.支持每页显示几个单元
+</div>
+<h3>调用方法:</h3>
+<pre  class="content" style="font-family:Arial;font-size:11px;border:1px dotted #eee;padding:20px;">
+$("#test").slider({
+	size:1,//显示区域显示多少片
+	prev:"#prev",//绑定上一组ID
+	next:"#next",//绑定下一组ID
+	prev_disable_class:"prev-disabled",//当上一组没有时的样式
+	next_disable_class:"next-disabled",//当下一组没有时的样式
+	pager:"#pager",//绑定页码，当不设置不显示页码
+	pager_event:'click',//页码相应方式，默认是mouseover
+	easing:'easeOutCirc',//滑动效果算法插件，需要引入jquery.easing.js
+	mousewheel:true,//支持鼠标滚轮滚动
+	speed:600,//速度
+	prev_callback:function(page){//点上一组后回调
+		var me=$("#qa-say").find("li").eq(page).find(".accordion-active");
+		show_answer(me.find("em").text(),me.data("a"),me.data("b"),me.data("c"));
+	},
+	next_callback:function(page){//点下一组后回调
+		var me=$("#qa-say").find("li").eq(page).find(".accordion-active");
+		show_answer(me.find("em").text(),me.data("a"),me.data("b"),me.data("c"));
+	},
+	pager_callback:function(page){//点页码回调
+		var me=$("#qa-say").find("li").eq(page).find(".accordion-active");
+		show_answer(me.find("em").text(),me.data("a"),me.data("b"),me.data("c"));
+	}
+});
+</pre>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jinzhenet"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+<script src="http://www.oschina.net/js/2012/jquery-1.7.1.min.js"></script>
+<script src="scripts/jquery.easing.js"></script>
+<script src="scripts/jquery.mousewheel.js"></script>
+<script src="scripts/jquery.slider.js"></script>
+<script>
+$(function(){
+	$("#demo").slider({
+		size:3,//显示区域显示多少片
+		prev:"#prev",//绑定上一组ID
+		next:"#next",//绑定下一组ID
+		prev_disable_class:"prev-disabled",//当上一组没有时的样式
+		next_disable_class:"next-disabled",//当下一组没有时的样式
+		pager:"#pager",//绑定页码，当不设置不显示页码
+		pager_event:'click',//页码相应方式，默认是mouseover
+		easing:'easeOutBounce',//滑动效果算法插件，需要引入jquery.easing.js
+		mousewheel:true,//支持鼠标滚轮滚动
+		speed:800,//速度
+		prev_callback:function(page){//点上一组后回调
+ 
+		},
+		next_callback:function(page){//点下一组后回调
+ 
+		},
+		pager_callback:function(page){//点页码回调
+ 
+		}
+	});
+	$("#demo2").slider({
+		direction:1,
+		size:3,//显示区域显示多少片
+		prev:"#prev2",//绑定上一组ID
+		next:"#next2",//绑定下一组ID
+		prev_disable_class:"prev2-disabled",//当上一组没有时的样式
+		next_disable_class:"next2-disabled",//当下一组没有时的样式
+		easing:'easeOutBounce',//滑动效果算法插件，需要引入jquery.easing.js
+		mousewheel:true,//支持鼠标滚轮滚动
+		speed:800,//速度
+		step:3
+	});
+});
+</script>
+</body>
+</html>
