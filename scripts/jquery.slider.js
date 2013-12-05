@@ -1,9 +1,8 @@
 /*
-婆婆滑
+婆婆滑 V 0.2
 author:YC
 date:2013/12/04
 email:129#jinzhe.net
-
 */
 (function($){
 	$.fn.slider=function(options){
@@ -133,8 +132,10 @@ email:129#jinzhe.net
 		}
 		//自动播放
 		if(options.autoplay){
-			page++;
-			interval=setTimeout(go,options.interval,page);
+			interval=setTimeout(function(){
+				page++;
+				go(page);
+			},options.interval);
 		}
 		//支持拖拽
 		if(options.drag){
