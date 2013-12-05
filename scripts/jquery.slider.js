@@ -133,6 +133,7 @@ email:129#jinzhe.net
 		}
 		//自动播放
 		if(options.autoplay){
+			page++;
 			interval=setTimeout(go,options.interval,page);
 		}
 		//支持拖拽
